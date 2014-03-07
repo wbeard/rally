@@ -60,11 +60,11 @@ Usage:
 
 	cells.print();
 
-logs 	0 0 0 0 0 
-		1 0 1 1 1 
-		1 1 1 1 1 
-		0 1 0 0 0 
-		0 0 0 0 0 
+logs 	0 0 0 0 0 <br />
+		1 0 1 1 1 <br />
+		1 1 1 1 1 <br />
+		0 1 0 0 0 <br />
+		0 0 0 0 0 <br />
 
 Templating engine
 -----------------
