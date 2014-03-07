@@ -75,7 +75,7 @@ Templating engine
 
 Usage:
 	
-	var template = require('./template');
+	var template = require('./template'),
 		generatedString = template("${activity} is ${adjective}!", {
 			activity: 'Coding',
 			adjective: 'fun'
