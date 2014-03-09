@@ -1,4 +1,4 @@
-/*module.exports = Spiral;*/
+module.exports = Spiral;
 
 function Spiral(/*number*/ num) {
 
