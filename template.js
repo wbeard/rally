@@ -8,7 +8,6 @@ module.exports = function(/* string */ template, /* object */ obj) {
 
   return template.replace(/\$\{([^\s\:\}]+)\}/g,
     function(match, key) {
-      console.log(arguments);
       var val = obj[key];
       if(val) {
         return val;
