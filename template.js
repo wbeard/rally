@@ -6,8 +6,9 @@ module.exports = function(/* string */ template, /* object */ obj) {
   if(typeof obj === "undefined")
     throw new Error("Please provide an object to map.");
 
-  return template.replace(/\$\{([^\s\:\}]+)(?:\:([^\s\:\}]+))?\}/g,
+  return template.replace(/\$\{([^\s\:\}]+)\}/g,
     function(match, key) {
+      console.log(arguments);
       var val = obj[key];
       if(val) {
         return val;
