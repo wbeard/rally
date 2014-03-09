@@ -1,25 +1,22 @@
 module.exports = Handler;
 
-var ranks  = {
-	0: {
-		rank: 0,
+var ranks  = [
+	{
 		name: 'High Card',
 		regex: '',
 		match: function() {
 			return true;
 		}
 	},
-	1: {
-		rank: 1,
+  {
 		name: 'One pair',
 		match: function(obj) {
 			var regex = /(.)\1{1,}/;
 			return regex.test(obj.numberVal);
 		}
 	},
-	2: {
-		rank: 2,
-		name: 'Two pair',
+  {
+	 name: 'Two pair',
 		match: function(obj) {
 			var regex = /(.)\1{1,}/,
 				hasMatch = obj.numberVal.match(regex);
@@ -37,16 +34,14 @@ var ranks  = {
 			}
 		}
 	},
-	3: {
-		rank: 3,
+	{
 		name: 'Three of a kind',
 		match: function(obj) {
 			var regex = /(.)\1{2,}/;
 			return regex.test(obj.numberVal);
 		}
 	},
-	4: {
-		rank: 4,
+	{
 		name: 'Straight',
 		match: function(obj) {
 			var chars = "23456789AJQKT",
@@ -58,16 +53,14 @@ var ranks  = {
 			}
 		}
 	},
-	5: {
-		rank: 5,
+  {
 		name: 'Flush',
 		match: function(obj) {
 			var regex = /(.)\1{4,}/;
 			return regex.test(obj.suiteVal);
 		}
 	},
-	6: {
-		rank: 6,
+  {
 		name: 'Full house',
 		match: function(obj) {
 			var regex = /(.)\1{2,}/,
@@ -86,16 +79,14 @@ var ranks  = {
 			}
 		}
 	},
-	7: {
-		rank: 7,
+  {
 		name: 'Four of a kind',
 		match: function(obj) {
 			var regex = /(.)\1{3,}/;
 			return regex.test(obj.numberVal);
 		}
 	},
-	8: {
-		rank: 8,
+  {
 		name: 'Straight flush',
 		match: function(obj) {
 			var chars = "23456789AJKQT",
@@ -106,8 +97,7 @@ var ranks  = {
 			return hasNumberMatch && hasNumberMatch[0].split('').length === 5 && hasSuiteMatch;
 		}
 	},
-	9: {
-		rank: 9,
+	{
 		name: 'Royal flush',
 		match: function(obj) {
 			var chars = "AJKQT",
@@ -118,9 +108,9 @@ var ranks  = {
 			return hasNumberMatch && hasNumberMatch[0].split('').length === 5 && hasSuiteMatch;
 		}
 	}
-};
+];
 
-function _normalizeCardInput(input, options) {
+function _normalizeCardInput( /* string || array */ input, /* object? */ options) {
 
   var cards = [];
 
@@ -157,7 +147,7 @@ function Handler(/* string || array */ cards, /* object? */options) {
 
 } // Handler
 
-Handler.prototype.getCardProperties = function(key) {
+Handler.prototype.getCardProperties = function(/*string*/ key) {
 	var arr = [];
 
 	for(var card in this.hand) {
@@ -170,7 +160,7 @@ Handler.prototype.getCardProperties = function(key) {
 } // _getCardProperties
 
 Handler.prototype.rankHand = function() {
-	var rankCount = Object.keys(ranks).length - 1,
+	var rankCount = ranks.length - 1,
 		handSuites = this.getCardProperties("suite").sort().join(''),
 		handNumbers = this.getCardProperties("value").sort().join(''),
 		handObj = {

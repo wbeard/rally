@@ -81,7 +81,7 @@ function Cell(/*bool*/ alive, /*number*/ x, /*number*/ y) {
   this.y = y;
 } // Cell
 
-function isAlive(alive) {
+function isAlive(/*bool*/ alive) {
   return alive;
 } // isAlive
 
