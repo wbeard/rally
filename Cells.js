@@ -36,16 +36,6 @@ function Cells(/* Array */ numericArray) {
 
   this.collection = _createCells(numericArray);
 
-
-  this.flipCells = function() {
-    for(var child in this.collection) {
-      if(this.collection.hasOwnProperty(child)) {
-        this.collection[child].gameMyLife();
-      }// if
-    }// for
-    return this;
-  }
-
   this.flipBoard = function() {
     for(var child in this.collection) {
       if(this.collection.hasOwnProperty(child)) {
@@ -55,10 +45,11 @@ function Cells(/* Array */ numericArray) {
     return this;
   }
 
-  this.resolveCellNeighbors = function() {
+  this.predictFuture = function() {
     for(var child in this.collection) {
       if(this.collection.hasOwnProperty(child)) {
         this.collection[child].findNeighbors();
+        this.collection[child].gameMyLife();
       }// if
     }// for
     return this;
@@ -66,8 +57,7 @@ function Cells(/* Array */ numericArray) {
 
   this.print = function() {
 
-    this.resolveCellNeighbors();
-    this.flipCells();
+    this.predictFuture();
     this.flipBoard();
 
     var widthBound = this.width,
