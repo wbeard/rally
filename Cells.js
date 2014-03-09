@@ -4,7 +4,8 @@ function Cells(/* Array */ numericArray) {
   //numericArray:
   //              Assumes a multi-dimensional array
 
-  this.collection = [];
+  this.height = numericArray.length;
+  this.width = numericArray[0].length;
 
   this.find = function(/* number */ x, /* number */ y) {
     for(var child in this.collection) {
@@ -18,22 +19,22 @@ function Cells(/* Array */ numericArray) {
   };// find()
 
 
-  var _createCells = function(/* Array */arr) {
+  function _createCells(/* Array */arr) {
     var outerArrayLength = arr.length,
-        outerCounter = 0;
-        this.height = outerArrayLength;
+        outerCounter = 0,
+        returnArray = [];
     for(outerCounter; outerCounter < outerArrayLength; outerCounter++) {
       var innerArray = arr[outerCounter]
           innerArrayLength = innerArray.length,
           innerCounter = 0;
-          this.width = innerArrayLength;
       for(innerCounter; innerCounter < innerArrayLength; innerCounter++) {
-        this.collection.push(new Cell(innerArray[innerCounter], innerCounter, outerCounter));
+        returnArray.push(new Cell(innerArray[innerCounter], innerCounter, outerCounter));
       } // inner array
     }// outer array
+    return returnArray;
   }; // _createCells()
 
-  _createCells.apply(this, [numericArray]);
+  this.collection = _createCells(numericArray);
 
 
   this.flipCells = function() {
