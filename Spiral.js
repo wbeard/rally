@@ -148,16 +148,4 @@ Spiral.prototype.print = function() {
     outerCounter = 0;
     displayString = '';
   }
-
-  /*for(outerCounter; outerCounter >= outerBound; outerCounter--) {
-    var innerArr = arr[outerCounter],
-        innerCounter =  0,
-        innerBound = innerArr.length,
-        displayString = "";
-    for(innerCounter; innerCounter < innerBound; innerCounter++) {
-      displayString += innerArr[innerCounter] < 10 ? "  " + innerArr[innerCounter] : " " + innerArr[innerCounter];
-    } // for
-    console.log(displayString);
-    displayString = "";
-  }// for */
 } // Spiral.print
