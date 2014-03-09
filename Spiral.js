@@ -1,31 +1,5 @@
 module.exports = Spiral;
 
-function Spiral(/*number*/ num) {
-
-this.num = num;
-
-this.make = function() {
-  return makeSpiral(this.num);
-}
-
-this.print = function() {
-  var arr = this.make(),
-      outerCounter = arr.length - 1,
-      outerBound = 0;
-
-  for(outerCounter; outerCounter >= outerBound; outerCounter--) {
-    var innerArr = arr[outerCounter],
-        innerCounter =  0,
-        innerBound = innerArr.length,
-        displayString = "";
-    for(innerCounter; innerCounter < innerBound; innerCounter++) {
-      displayString += innerArr[innerCounter] < 10 ? "  " + innerArr[innerCounter] : " " + innerArr[innerCounter];
-    } // for
-    console.log(displayString);
-    displayString = "";
-  }// for
-}
-
 var directions = {
       up: [0,-1],
       down: [0, 1],
@@ -97,8 +71,7 @@ function makeSpiral(/* number */ num) {
   }
 
   return spiralArr;
-
-}
+} // makeSpiral
 
 function resolveCenterPoint(/* number */ width, /* number */ height) {
   if(width % 2 === 0) {
@@ -106,7 +79,7 @@ function resolveCenterPoint(/* number */ width, /* number */ height) {
   } else {
     return [parseInt(width/2), parseInt(height/2)];
   }
-}
+} // resolveCenterPoint
 
 function multiDimensionalArrayFactory(/* number */ width, /* number */ height) {
   var multiArr = [];
@@ -117,8 +90,7 @@ function multiDimensionalArrayFactory(/* number */ width, /* number */ height) {
   }
 
   return multiArr;
-
-}
+} // multiDimensionalArrayFactory
 
 function validate(/* number */ width, /* number */ height) {
   if(width !== height) {
@@ -154,4 +126,38 @@ function matrixDimensions(/* number */ num) {
       } // for
 }// matrixDimensions
 
-}
+function Spiral(/*number*/ num) {
+
+  this.num = num;
+
+} // Spiral
+
+Spiral.prototype.print = function() {
+  var arr = makeSpiral(this.num),
+      outerCounter = 0,
+      outerBound = arr.length,
+      innerCounter = 0,
+      innerBound = arr[0].length;
+
+  for(innerCounter; innerCounter < innerBound; innerCounter++) {
+    var displayString = '';
+    for(outerCounter; outerCounter < outerBound; outerCounter++) {
+      displayString += arr[outerCounter][innerCounter] < 10 ? " " + arr[outerCounter][innerCounter] : + arr[outerCounter][innerCounter];
+    }
+    console.log(displayString);
+    outerCounter = 0;
+    displayString = '';
+  }
+
+  /*for(outerCounter; outerCounter >= outerBound; outerCounter--) {
+    var innerArr = arr[outerCounter],
+        innerCounter =  0,
+        innerBound = innerArr.length,
+        displayString = "";
+    for(innerCounter; innerCounter < innerBound; innerCounter++) {
+      displayString += innerArr[innerCounter] < 10 ? "  " + innerArr[innerCounter] : " " + innerArr[innerCounter];
+    } // for
+    console.log(displayString);
+    displayString = "";
+  }// for */
+} // Spiral.print
