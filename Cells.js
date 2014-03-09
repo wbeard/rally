@@ -101,29 +101,29 @@ function Cell(/*bool*/ alive, /*number*/ x, /*number*/ y) {
             topLeftNeighbor = cells.find(x - 1, y - 1);
 
         if (topNeighbor)
-          this.neighbors.push(topNeighbor);
+          this.neighbors.push(topNeighbor.alive);
         if (topRightNeighbor)
-          this.neighbors.push(topRightNeighbor);
+          this.neighbors.push(topRightNeighbor.alive);
         if (rightNeighbor)
-          this.neighbors.push(rightNeighbor);
+          this.neighbors.push(rightNeighbor.alive);
         if (bottomRightNeighbor)
-          this.neighbors.push(bottomRightNeighbor);
+          this.neighbors.push(bottomRightNeighbor.alive);
         if (bottomNeighbor)
-          this.neighbors.push(bottomNeighbor);
+          this.neighbors.push(bottomNeighbor.alive);
         if(bottomLeftNeighbor)
-          this.neighbors.push(bottomLeftNeighbor);
+          this.neighbors.push(bottomLeftNeighbor.alive);
         if(leftNeighbor)
-          this.neighbors.push(leftNeighbor);
+          this.neighbors.push(leftNeighbor.alive);
         if(topLeftNeighbor)
-          this.neighbors.push(topLeftNeighbor);
+          this.neighbors.push(topLeftNeighbor.alive);
       };
 
   this.alive = alive;
   this.x = x;
   this.y = y;
 
-  function isAlive(cell) {
-    return cell.alive;
+  function isAlive(alive) {
+    return alive;
   }
   
   this.gameMyLife = function() {
