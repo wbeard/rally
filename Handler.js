@@ -146,7 +146,7 @@ function Handler(/* string || array */ cards, /* object? */options) {
 						}
 						cards.push({
 							value: normalizeValue,
-							suite: card.slice(input[i].length - 1)
+							suite: card.slice(card.length - 1)
 						});
 					} // if
 				} // for
