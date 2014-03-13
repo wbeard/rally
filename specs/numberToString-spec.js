@@ -25,6 +25,10 @@ describe("Rally Tests", function() {
         expect(numberToStringRep(0.64)).toBe("And 64/100 dollars");
       });
 
+      it("should display 0/100 dollars at the end of the string", function() {
+        expect(numberToStringRep(100)).toContain("0/100");
+      });
+
     });
     // Errors & Boundary Checks
     describe("Errors & Boundary Checks", function() {
