@@ -4,6 +4,7 @@ module.exports = function(/* number */ number) {
 	if(!+number)
 		throw new Error("Must pass an argument and must be a number");
 
+	number = parseFloat(+number).toFixed(2);
 
 	return resolveNumberToText(number);
 
@@ -11,7 +12,6 @@ module.exports = function(/* number */ number) {
 
 function resolveNumberToText(/* number */ number) {
 	// Number formatting. In case we get a whole number.
-	number = parseFloat(+number).toFixed(2);
 	var numberArray = number.split("."),
 		wholeNumber = numberArray[0],
 		remainderNumber = numberArray[1],
