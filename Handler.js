@@ -110,44 +110,46 @@ var ranks  = [
 	}
 ];
 
-function _normalizeCardInput( /* string || array */ input, /* object? */ options) {
-
-  var cards = [];
-
-	if(Object.prototype.toString.call(input) !== "[object Array]")
-		input = options ? input.split(options.delimeter) : input.split(" ");
-
-	for(var i in input) {
-		if(input.hasOwnProperty(i)) {
-			var card = input[i],
-				normalizeValue = '';
-			if (card.slice(0, card.length - 1) === "10") {
-				normalizeValue = "T";
-			} else {
-				normalizeValue = card.slice(0, card.length - 1);
-			}
-			cards.push({
-				value: normalizeValue,
-				suite: card.slice(card.length - 1)
-			});
-		} // if
-	} // for
-
-	return cards;
-
-} // _normalizeCardInput
-
 function Handler(/* string || array */ cards, /* object? */options) {
-
+	'use strict';
 	if(typeof cards === "undefined")
 		throw new Error("Provide a hand. Pass as an array or as a string. Delimits by ' ' by default. Feel free to pass a delimiter in the options parameter new Handler('...', { delimiter: ',' })");
 
 	this.input = cards;
 	this.hand = _normalizeCardInput(cards, options);
 
+	function _normalizeCardInput( /* string || array */ input, /* object? */ options) {
+		'use strict';
+	  var cards = [];
+
+		if(Object.prototype.toString.call(input) !== "[object Array]")
+			input = options ? input.split(options.delimeter) : input.split(" ");
+
+		for(var i in input) {
+			if(input.hasOwnProperty(i)) {
+				var card = input[i],
+					normalizeValue = '';
+				if (card.slice(0, card.length - 1) === "10") {
+					normalizeValue = "T";
+				} else {
+					normalizeValue = card.slice(0, card.length - 1);
+				}
+				cards.push({
+					value: normalizeValue,
+					suite: card.slice(card.length - 1)
+				});
+			} // if
+		} // for
+
+		return cards;
+
+	} // _normalizeCardInput
+
 } // Handler
 
 Handler.prototype.getCardProperties = function(/*string*/ key) {
+	'use strict';
+
 	var arr = [];
 
 	for(var card in this.hand) {
@@ -160,6 +162,8 @@ Handler.prototype.getCardProperties = function(/*string*/ key) {
 } // _getCardProperties
 
 Handler.prototype.rankHand = function() {
+	'use strict';
+
 	var rankCount = ranks.length - 1,
 		handSuites = this.getCardProperties("suite").sort().join(''),
 		handNumbers = this.getCardProperties("value").sort().join(''),

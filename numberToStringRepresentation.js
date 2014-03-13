@@ -1,17 +1,23 @@
 module.exports = function(/* number */ number) {
 	// Casting to a number helps resolve the value
 	// to either a number or NaN, which is a falsy value.
-	if(!+number)
+	'use strict';
+	if(!+number) {
 		throw new Error("Must pass an argument and must be a number");
+	}
 
 	number = parseFloat(+number).toFixed(2);
+
+	if(number > 999999999) {
+		throw new Error("We don't do billions round here.");
+	}
 
 	return resolveNumberToText(number);
 
 }
 
 function resolveNumberToText(/* number */ number) {
-	// Number formatting. In case we get a whole number.
+	'use strict';
 	var numberArray = number.split("."),
 		wholeNumber = numberArray[0],
 		remainderNumber = numberArray[1],
@@ -25,6 +31,7 @@ function resolveNumberToText(/* number */ number) {
 }
 
 function recurseWholeNumber(/* number */ number) {
+	'use strict';
 	number = parseInt(number);
 	switch(true) {
 		case(number == 0):

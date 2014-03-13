@@ -10,6 +10,7 @@ var directions = {
     evenDirectionSequence = [directions.down, directions.left, directions.up, directions.right];
 
 function makeSpiral(/* number */ num) {
+  'use strict';
   var dimensions = matrixDimensions(num+1),
       centerPoint = resolveCenterPoint(dimensions.width, dimensions.height),
       spiralArr = multiDimensionalArrayFactory(dimensions.width, dimensions.height),
@@ -74,6 +75,7 @@ function makeSpiral(/* number */ num) {
 } // makeSpiral
 
 function resolveCenterPoint(/* number */ width, /* number */ height) {
+  'use strict';
   if(width % 2 === 0) {
     return [parseInt(width/2), parseInt(height/2) - 1];
   } else {
@@ -82,6 +84,7 @@ function resolveCenterPoint(/* number */ width, /* number */ height) {
 } // resolveCenterPoint
 
 function multiDimensionalArrayFactory(/* number */ width, /* number */ height) {
+  'use strict';
   var multiArr = [];
 
   for(var counter = 0; counter < height; counter++) {
@@ -93,6 +96,7 @@ function multiDimensionalArrayFactory(/* number */ width, /* number */ height) {
 } // multiDimensionalArrayFactory
 
 function validate(/* number */ width, /* number */ height) {
+  'use strict';
   if(width !== height) {
     return false;
   } else {
@@ -101,6 +105,7 @@ function validate(/* number */ width, /* number */ height) {
 }
 
 function matrixDimensions(/* number */ num) {
+  'use strict';
   //summary:
   //      determine dimensions of grid.
   //      provides flexibility to move to non-square grid
@@ -127,12 +132,13 @@ function matrixDimensions(/* number */ num) {
 }// matrixDimensions
 
 function Spiral(/*number*/ num) {
-
+  'use strict';
   this.num = num;
 
 } // Spiral
 
 Spiral.prototype.print = function() {
+  'use strict';
   var arr = makeSpiral(this.num),
       outerCounter = 0,
       outerBound = arr.length,

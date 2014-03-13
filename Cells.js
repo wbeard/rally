@@ -1,6 +1,7 @@
 module.exports = Cells;
 
 function Cells(/* Array */ numericArray) {
+  'use strict';
   //numericArray:
   //              Assumes a multi-dimensional array
   this.height = numericArray.length;
@@ -9,6 +10,7 @@ function Cells(/* Array */ numericArray) {
 }; // Cells
 
 function _createCells(/* Array */arr) {
+  'use strict';
   var outerArrayLength = arr.length,
       outerCounter = 0,
       returnArray = [];
@@ -24,6 +26,7 @@ function _createCells(/* Array */arr) {
 }; // _createCells
 
 Cells.prototype.find = function(/* number */ x, /* number */ y) {
+  'use strict';
   for(var child in this.collection) {
     if(this.collection.hasOwnProperty(child)) {
       var cell = this.collection[child];
@@ -35,6 +38,7 @@ Cells.prototype.find = function(/* number */ x, /* number */ y) {
 };// Cells.find
 
 Cells.prototype.flipBoard = function() {
+  'use strict';
   for(var child in this.collection) {
     if(this.collection.hasOwnProperty(child)) {
       this.collection[child].alive = this.collection[child].flipAlive
@@ -44,6 +48,7 @@ Cells.prototype.flipBoard = function() {
 } // Cells.flipBoard
 
 Cells.prototype.predictFuture = function() {
+  'use strict';
   for(var child in this.collection) {
     if(this.collection.hasOwnProperty(child)) {
       this.collection[child].findNeighbors();
@@ -54,7 +59,7 @@ Cells.prototype.predictFuture = function() {
 } // Cells.predictFuture
 
 Cells.prototype.print = function() {
-
+  'use strict';
   this.predictFuture();
   this.flipBoard();
 
@@ -75,6 +80,7 @@ Cells.prototype.print = function() {
 } // Cells.print
 
 function Cell(/*bool*/ alive, /*number*/ x, /*number*/ y) {
+  'use strict';
   this.neighbors = [];
   this.alive = alive;
   this.x = x;
@@ -82,10 +88,12 @@ function Cell(/*bool*/ alive, /*number*/ x, /*number*/ y) {
 } // Cell
 
 function isAlive(/*bool*/ alive) {
+  'use strict';
   return alive;
 } // isAlive
 
 Cell.prototype.gameMyLife = function() {
+  'use strict';
   if(this.alive) {
     this.flipAlive = !(this.neighbors.filter(isAlive).length < 2 || this.neighbors.filter(isAlive).length > 3) || (this.neighbors.filter(isAlive).length >= 2 && this.neighbors.filter(isAlive).length <= 3);
   } else {
@@ -94,6 +102,7 @@ Cell.prototype.gameMyLife = function() {
 } // Cell.gameMyLife
 
 Cell.prototype.findNeighbors = function() {
+  'use strict';
   var x = this.x,
       y = this.y,
       topNeighbor = cells.find(x, y - 1),
