@@ -53,6 +53,6 @@ function recurseWholeNumber(/* number */ number) {
 			return recurseWholeNumber(number / 1000) + "thousand " + recurseWholeNumber(number % 1000);
 			break;
 		default:
-			return recurseWholeNumber(number / 10000) + "million " + recurseWholeNumber(number % 1000000);
+			return recurseWholeNumber(number / 1000000) + "million " + recurseWholeNumber(number % 1000000);
 	}
 }

@@ -7,23 +7,23 @@ function Cells(/* Array */ numericArray) {
   this.height = numericArray.length;
   this.width = numericArray[0].length;
   this.collection = _createCells(numericArray);
-}; // Cells
 
-function _createCells(/* Array */arr) {
-  'use strict';
-  var outerArrayLength = arr.length,
-      outerCounter = 0,
-      returnArray = [];
-  for(outerCounter; outerCounter < outerArrayLength; outerCounter++) {
-    var innerArray = arr[outerCounter]
-        innerArrayLength = innerArray.length,
-        innerCounter = 0;
-    for(innerCounter; innerCounter < innerArrayLength; innerCounter++) {
-      returnArray.push(new Cell(innerArray[innerCounter], innerCounter, outerCounter));
-    } // inner array
-  }// outer array
-  return returnArray;
-}; // _createCells
+  function _createCells(/* Array */arr) {
+    'use strict';
+    var outerArrayLength = arr.length,
+        outerCounter = 0,
+        returnArray = [];
+    for(outerCounter; outerCounter < outerArrayLength; outerCounter++) {
+      var innerArray = arr[outerCounter]
+          innerArrayLength = innerArray.length,
+          innerCounter = 0;
+      for(innerCounter; innerCounter < innerArrayLength; innerCounter++) {
+        returnArray.push(new Cell(innerArray[innerCounter], innerCounter, outerCounter));
+      } // inner array
+    }// outer array
+    return returnArray;
+  }; // _createCells
+}; // Cells
 
 Cells.prototype.find = function(/* number */ x, /* number */ y) {
   'use strict';
