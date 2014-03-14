@@ -1,8 +1,4 @@
-var   numberToStringRep = require("../numberToStringRepresentation")
-    , Cells = require("../Cells")
-    , Handler = require("../Handler")
-    , Spiral = require("../Spiral")
-    , template = require("../template");
+var NumToStringConverter = require("../lib/NumToStringConverter");
 
 describe("Rally Tests", function() {
 
@@ -14,19 +10,23 @@ describe("Rally Tests", function() {
     describe("Truths", function() {
 
       it("should display Two thousand five hundred twenty three and 04/100 dollars", function() {
-        expect(numberToStringRep(2523.04)).toBe("Two thousand five hundred twenty three and 04/100 dollars");
+        var numToString = new NumToStringConverter(2523.04);
+        expect(numToString.print()).toBe("Two thousand five hundred twenty three and 04/100 dollars");
       });
 
       it("should display Three million two hundred fifty thousand five hundred twenty three and 64/100 dollars", function() {
-        expect(numberToStringRep(3250523.64)).toBe("Three million two hundred fifty thousand five hundred twenty three and 64/100 dollars");
+        var numToString = new NumToStringConverter(3250523.64);
+        expect(numToString.print()).toBe("Three million two hundred fifty thousand five hundred twenty three and 64/100 dollars");
       });
 
       it("should display And 64/100 dollars", function() {
-        expect(numberToStringRep(0.64)).toBe("And 64/100 dollars");
+        var numToString = new NumToStringConverter(0.64);
+        expect(numToString.print()).toBe("And 64/100 dollars");
       });
 
       it("should display 0/100 dollars at the end of the string", function() {
-        expect(numberToStringRep(100)).toContain("0/100");
+        var numToString = new NumToStringConverter(100);
+        expect(numToString.print()).toContain("0/100");
       });
 
     });
@@ -34,13 +34,16 @@ describe("Rally Tests", function() {
     describe("Errors & Boundary Checks", function() {
 
       it("should expect an error to be thrown", function() {
-        expect(numberToStringRep).toThrow(new Error("Must pass an argument and must be a number"));
+        var constructCall = function() {
+          return new NumToStringConverter();
+        };
+        expect(constructCall).toThrow(new Error("Must pass an argument and must be a number"));
       });
 
       it("should expect an error if the amount is 1bn or greater", function() {
         var billionCall = function() {
-          return numberToStringRep(1000000000);
-        }
+          return new NumToStringConverter(1000000000);
+        };
         expect(billionCall).toThrow(new Error("We don't do billions round here."));
       });
 
