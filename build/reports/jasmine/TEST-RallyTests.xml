@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-<testsuite name="Rally Tests" errors="0" tests="0" failures="0" time="0" timestamp="2014-03-14T11:15:32">
+<testsuite name="Rally Tests" errors="0" tests="0" failures="0" time="0" timestamp="2014-03-14T11:46:48">
 </testsuite>
-<testsuite name="Rally Tests.Number To String Test Suite" errors="0" tests="0" failures="0" time="0" timestamp="2014-03-14T11:15:32">
+<testsuite name="Rally Tests.Number To String Test Suite" errors="0" tests="0" failures="0" time="0" timestamp="2014-03-14T11:46:48">
 </testsuite>
-<testsuite name="Rally Tests.Number To String Test Suite.Truths" errors="0" tests="4" failures="0" time="0.014" timestamp="2014-03-14T11:15:32">
-  <testcase classname="Rally Tests.Number To String Test Suite.Truths" name="should display Two thousand five hundred twenty three and 04/100 dollars" time="0.013"></testcase>
+<testsuite name="Rally Tests.Number To String Test Suite.Truths" errors="0" tests="4" failures="0" time="0.004" timestamp="2014-03-14T11:46:48">
+  <testcase classname="Rally Tests.Number To String Test Suite.Truths" name="should display Two thousand five hundred twenty three and 04/100 dollars" time="0.003"></testcase>
   <testcase classname="Rally Tests.Number To String Test Suite.Truths" name="should display Three million two hundred fifty thousand five hundred twenty three and 64/100 dollars" time="0"></testcase>
   <testcase classname="Rally Tests.Number To String Test Suite.Truths" name="should display And 64/100 dollars" time="0"></testcase>
   <testcase classname="Rally Tests.Number To String Test Suite.Truths" name="should display 0/100 dollars at the end of the string" time="0"></testcase>
 </testsuite>
-<testsuite name="Rally Tests.Number To String Test Suite.Errors &amp; Boundary Checks" errors="0" tests="2" failures="0" time="0.001" timestamp="2014-03-14T11:15:32">
-  <testcase classname="Rally Tests.Number To String Test Suite.Errors &amp; Boundary Checks" name="should expect an error to be thrown" time="0"></testcase>
+<testsuite name="Rally Tests.Number To String Test Suite.Errors &amp; Boundary Checks" errors="0" tests="2" failures="0" time="0.001" timestamp="2014-03-14T11:46:48">
+  <testcase classname="Rally Tests.Number To String Test Suite.Errors &amp; Boundary Checks" name="should expect an error to be thrown" time="0.001"></testcase>
   <testcase classname="Rally Tests.Number To String Test Suite.Errors &amp; Boundary Checks" name="should expect an error if the amount is 1bn or greater" time="0"></testcase>
 </testsuite>
 </testsuites>

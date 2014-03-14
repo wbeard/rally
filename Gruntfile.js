@@ -35,11 +35,10 @@ module.exports = function (grunt) {
       },
       lib: {
         src: ['lib/**/*.js']
-      },
-      test: {
-        src: ['spec/**/*.js'],
-        undef: false
-      }
+      }//,
+      //test: {
+        //src: ['spec/**/*.js']
+      //}
     },
     watch: {
       gruntfile: {
@@ -51,7 +50,7 @@ module.exports = function (grunt) {
         tasks: ['jshint:lib', 'jasmine_node']
       },
       test: {
-        files: '<%= jshint.test.src %>',
+        files: ['spec/**/*.js'],
         tasks: ['jasmine_node']
       }
     }
@@ -60,6 +59,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-jasmine-node');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'jasmine_node', 'watch']);
+  grunt.registerTask('default', ['jshint', 'jasmine_node']);
 
 };
