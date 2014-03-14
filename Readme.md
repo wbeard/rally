@@ -9,7 +9,7 @@ Convert a number to its text representation
 Usage:
 
 	var NumToStringConverter = require('./NumToStringConverter'),
-			numToString = new NumToStringConverter(2023.04);
+		numToString = new NumToStringConverter(2023.04);
 
 	numToString.print();
 

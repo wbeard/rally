@@ -15,7 +15,7 @@ module.exports = function (grunt) {
         match: '.',
         matchall: true,
         extensions: 'js',
-        //specNameMatcher: 'spec',
+        specNameMatcher: 'spec',
         jUnit: {
           report: true,
           savePath : "./build/reports/jasmine/",
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         src: ['lib/**/*.js']
       },
       test: {
-        src: ['specs/**/*.js'],
+        src: ['spec/**/*.js'],
         undef: false
       }
     },
@@ -52,7 +52,7 @@ module.exports = function (grunt) {
       },
       test: {
         files: '<%= jshint.test.src %>',
-        tasks: ['jshint:specs', 'jasmine_node']
+        tasks: ['jasmine_node']
       }
     }
   });
@@ -60,6 +60,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-jasmine-node');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'jasmine_node']);
+  grunt.registerTask('default', ['jshint', 'jasmine_node', 'watch']);
 
 };
