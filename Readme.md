@@ -4,11 +4,14 @@ Rally Exercises
 Convert a number to its text representation
 -------------------------------------------
 
-### numberToStringRepresentation.js
+### NumToStringConverter.js
 
 Usage:
 
-`require('./numberToStringRepresentation')(2523.04);`
+	var NumToStringConverter = require('./NumToStringConverter'),
+			numToString = new NumToStringConverter(2023.04);
+
+	numToString.print();
 
 logs "Two thousand twenty three and 04/100 dollars"
 
@@ -36,7 +39,7 @@ Spiral
 ### Spiral.js
 
 Usage:
-	
+
 	var Spiral = require('./Spiral'),
 		spiral = new Spiral(24);
 
@@ -61,7 +64,7 @@ Usage:
 
 	cells.print();
 
-logs <br />	
+logs <br />
 		0 0 0 0 0 <br />
 		1 0 1 1 1 <br />
 		1 1 1 1 1 <br />
@@ -74,7 +77,7 @@ Templating engine
 ### template.js
 
 Usage:
-	
+
 	var template = require('./template'),
 		generatedString = template("${activity} is ${adjective}!", {
 			activity: 'Coding',
